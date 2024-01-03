@@ -12,7 +12,7 @@ const getAllNotes = async (req, res) => {
     const notes = await Note.find({ userId: req.user._id });
     res.status(200).json(notes);
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error1' });
   }
 };
 
@@ -23,7 +23,7 @@ const getNoteById = async (req, res) => {
 
     res.status(200).json(note);
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error2' });
   }
 };
 
@@ -42,7 +42,7 @@ const createNote = async (req, res) => {
 
     res.status(201).json({ message: 'Note created successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error', error: error.message });
+    res.status(500).json({ message: 'Internal server error3', error: error.message });
   }
 };
 
@@ -60,7 +60,7 @@ const updateNote = async (req, res) => {
 
     res.status(200).json({ message: 'Note updated successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error4' });
   }
 };
 
@@ -72,7 +72,7 @@ const deleteNote = async (req, res) => {
 
     res.status(200).json({ message: 'Note deleted successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error5' });
   }
 };
 
@@ -92,7 +92,7 @@ const shareNote = async (req, res) => {
 
     res.status(200).json({ message: 'Note shared successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error6' });
   }
 };
 
@@ -105,9 +105,10 @@ const searchNotes = async (req, res) => {
       $text: { $search: query },
     });
 
+
     res.status(200).json(notes);
   } catch (error) {
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 

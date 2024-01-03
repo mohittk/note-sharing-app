@@ -10,6 +10,7 @@ const authMiddleware = async (req, res, next) => {
     }
     const tokenWithoutBearer = token.slice(7);
 
+
     try {
         const decoded = jwt.verify(tokenWithoutBearer, config.secretKey);
         console.log('Decoded token:', decoded);
