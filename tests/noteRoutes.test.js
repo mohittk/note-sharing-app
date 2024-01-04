@@ -4,11 +4,12 @@ const app = require('../index');
 const User = require('../models/User');
 const Note = require('../models/Note');
 const jwt = require('jsonwebtoken');
+const config = require('../config');
 
 
 
 beforeAll(async () => {
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(config.mongo_uri);
 });
 
 afterAll(async () => {

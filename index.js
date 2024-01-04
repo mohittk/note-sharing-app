@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
-const PORT = process.env.PORT || 5000;
 const rateLimitMiddleware = require('./middleware/rateLimitMiddleware');
 const Note = require("./models/Note");
 const authRoutes = require('./routes/authRoutes');
@@ -13,7 +12,7 @@ const config = require('./config')
 
 try {
     mongoose.connect(config.mongo_uri).then(() => {
-        //console.log("DB connected");
+        console.log("DB connected");
     });
 } catch (err) {
     console.error(err);
@@ -33,7 +32,7 @@ module.exports = app;
 if (process.env.NODE_ENV !== 'test' && !module.parent) {
    
     const server = app.listen(config.port, () => {
-        //console.log(`Listening on port ${PORT}`);
+        console.log(`Listening on port ${config.port}`);
     });
 
     module.exports = { app, server };
