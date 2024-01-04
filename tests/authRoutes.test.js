@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const request = require('supertest');
 const app = require('../index');
 const config = require('../config');
-require("dotenv").config();
 
 beforeAll(async () => {
     await mongoose.connect(config.mongo_uri);
