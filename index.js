@@ -2,19 +2,17 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const PORT = process.env.PORT || 5000;
 const rateLimitMiddleware = require('./middleware/rateLimitMiddleware');
 const Note = require("./models/Note");
 const authRoutes = require('./routes/authRoutes');
 const noteRoutes = require('./routes/noteRoutes');
 const getRandomUser = require('./routes/getRandomUserRoute');
-const { getRounds } = require("bcrypt");
+const config = require('./config')
 
-dotenv.config();
 
 try {
-    mongoose.connect(process.env.MONGO_URI).then(() => {
+    mongoose.connect(config.mongo_uri).then(() => {
         //console.log("DB connected");
     });
 } catch (err) {
@@ -28,13 +26,13 @@ app.use(cors());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', noteRoutes);
-app.use('/api/getRandomUser', getRandomUser);
+app.use('/api/getRandomUser', rateLimitMiddleware, getRandomUser);
 
 module.exports = app;
 
 if (process.env.NODE_ENV !== 'test' && !module.parent) {
    
-    const server = app.listen(PORT, () => {
+    const server = app.listen(config.port, () => {
         //console.log(`Listening on port ${PORT}`);
     });
 
