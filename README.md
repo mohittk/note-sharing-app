@@ -20,7 +20,7 @@ Note Sharing App provides a platform for users to create, share, and collaborate
 - **Mongoose**: v5.10.0
   - *Justification:* Mongoose is an ODM (Object Data Modeling) library for MongoDB and Node.js. It simplifies interactions with MongoDB, providing a straightforward way to model and query data.
 
-## Installation
+### Installation
 
 Follow these steps to set up the Note Sharing App locally:
 
@@ -35,12 +35,12 @@ Create a file named config.js in the root of the project. Refer to the attached 
 <code>npm install</code>
 
 
-## Usage
+### Usage
 To run the Note Sharing App:
 
 1. **Run the application:**
 <code>npm start</code>
 
-## Tests
+### Tests
 Run tests for the Note Sharing App:
 <code>npm test</code>
