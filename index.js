@@ -8,12 +8,14 @@ const rateLimitMiddleware = require('./middleware/rateLimitMiddleware');
 const Note = require("./models/Note");
 const authRoutes = require('./routes/authRoutes');
 const noteRoutes = require('./routes/noteRoutes');
+const getRandomUser = require('./routes/getRandomUserRoute');
+const { getRounds } = require("bcrypt");
 
 dotenv.config();
 
 try {
     mongoose.connect(process.env.MONGO_URI).then(() => {
-        console.log("DB connected");
+        //console.log("DB connected");
     });
 } catch (err) {
     console.error(err);
@@ -26,16 +28,16 @@ app.use(cors());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', noteRoutes);
+app.use('/api/getRandomUser', getRandomUser);
 
 module.exports = app;
 
 if (process.env.NODE_ENV !== 'test' && !module.parent) {
    
     const server = app.listen(PORT, () => {
-        console.log(`Listening on port ${PORT}`);
+        //console.log(`Listening on port ${PORT}`);
     });
 
-    // Export the server for potential use in tests
     module.exports = { app, server };
 }
 

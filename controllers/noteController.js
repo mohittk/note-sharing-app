@@ -29,7 +29,7 @@ const getNoteById = async (req, res) => {
 
 const createNote = async (req, res) => {
   try {
-    console.log('Request user:', req.user);
+    //console.log('Request user:', req.user);
     const { title, content } = req.body;
 
     const newNote = new Note({

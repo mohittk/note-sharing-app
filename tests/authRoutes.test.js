@@ -22,7 +22,7 @@ describe('Auth Routes', () => {
             .send(userPayload)
             .set("Content-Type", "application/json")
 
-        // console.log('Response:', res.body);
+        // //console.log('Response:', res.body);
 
         expect(res.statusCode).toBe(201);
     });
