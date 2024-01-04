@@ -27,6 +27,15 @@ app.use(cors());
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', noteRoutes);
 
-app.listen(PORT, () => {
-    console.log(`Listening on ${PORT}`);
-});
+module.exports = app;
+
+if (process.env.NODE_ENV !== 'test' && !module.parent) {
+   
+    const server = app.listen(PORT, () => {
+        console.log(`Listening on port ${PORT}`);
+    });
+
+    // Export the server for potential use in tests
+    module.exports = { app, server };
+}
+
